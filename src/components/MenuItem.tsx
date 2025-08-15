@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MenuList from "./MenuList";
-import { Plus } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type { MenuItemType } from "../types/MenuItemType";
 import { Link } from "react-router";
 
@@ -32,7 +32,11 @@ const MenuItem = ({ item }: MenuItemProps) => {
             onClick={() => handleToggleClick(item.label)}
             className="p-1"
           >
-            <Plus className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+            {displayCurrentChildren[item.label] ? (
+              <ChevronUp className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-gray-400 hover:text-white transition-colors" />
+            )}
           </button>
         ) : null}
       </div>
